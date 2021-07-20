@@ -1,21 +1,27 @@
 import axios from 'axios';
-import authActions from './auth-actions';
+import {
+  registerRequest,
+  registerSuccess,
+  registerError,
+} from './auth-actions';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-const token = {};
+// const token = {};
 
-const register = credentials => dispatch => {};
+export const register = credentials => async dispatch => {
+  dispatch(registerRequest());
 
-const logIn = credentials => dispatch => {};
-
-const logOut = () => dispatch => {};
-
-const getCurrentUser = () => (dispatch, getState) => {};
-
-export default {
-  register,
-  logIn,
-  logOut,
-  getCurrentUser,
+  try {
+    const response = await axios.post('/users/signup', credentials);
+    dispatch(registerSuccess(response.data));
+  } catch (error) {
+    dispatch(registerError(error));
+  }
 };
+
+export const logIn = credentials => dispatch => {};
+
+export const logOut = () => dispatch => {};
+
+export const getCurrentUser = () => (dispatch, getState) => {};
