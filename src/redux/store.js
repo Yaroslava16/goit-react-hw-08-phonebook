@@ -1,4 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+
 import {
   FLUSH,
   REHYDRATE,
@@ -9,12 +10,7 @@ import {
 } from 'redux-persist';
 import logger from 'redux-logger';
 import { phonebookReducer } from './phonebook';
-
-const myMiddleware = store => next => action => {
-  console.log('Прослойка', action);
-
-  next(action);
-};
+import authReducer from './auth/auth-reducer';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -22,12 +18,12 @@ const middleware = [
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
   }),
-  myMiddleware,
   logger,
 ];
 
 const store = configureStore({
   reducer: {
+    auth: authReducer,
     phonebook: phonebookReducer,
   },
   middleware,
