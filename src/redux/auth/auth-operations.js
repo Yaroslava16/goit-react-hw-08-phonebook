@@ -3,6 +3,9 @@ import {
   registerRequest,
   registerSuccess,
   registerError,
+  loginRequest,
+  loginSuccess,
+  loginError
 } from './auth-actions';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -21,7 +24,19 @@ export const register = credentials => async dispatch => {
   }
 };
 
-export const logIn = credentials => dispatch => {};
+export const logIn = credentials => async dispatch => {
+
+  dispatch(loginRequest());
+
+  try {
+    const response = await axios.post('/users/login', credentials);
+
+    dispatch(loginSuccess(response.data));
+  } catch (error) {
+    dispatch(loginError(error.message));
+  }
+};
+
 
 export const logOut = () => dispatch => {};
 
