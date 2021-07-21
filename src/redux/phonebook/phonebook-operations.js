@@ -11,7 +11,7 @@ import {
   fetchContactsError,
 } from './phonebook-actions';
 
-axios.defaults.baseURL = 'http://localhost:4040';
+
 
 export const fetchContacts = () => dispatch => {
   dispatch(fetchContactsRequest());

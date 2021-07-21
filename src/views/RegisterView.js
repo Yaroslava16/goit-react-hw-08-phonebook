@@ -45,6 +45,7 @@ class RegisterView extends Component {
           <label style={styles.label}>
             Name
             <input
+            autoComplete="off"
               type="text"
               name="name"
               value={name}
@@ -55,6 +56,7 @@ class RegisterView extends Component {
           <label style={styles.label}>
             Email
             <input
+            autoComplete="off"
               type="email"
               name="email"
               value={email}
@@ -65,6 +67,7 @@ class RegisterView extends Component {
           <label style={styles.label}>
             Password
             <input
+            autoComplete="off"
               type="password"
               name="password"
               value={password}
