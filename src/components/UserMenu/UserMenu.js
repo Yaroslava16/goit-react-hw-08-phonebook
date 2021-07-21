@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import { logOut } from '../../redux/auth';
+import { logOut, getUsername} from '../../redux/auth';
 import defaultAvatar from './default-avatar.png';
-import { getUsername } from '../../redux/auth';
 
 const styles = {
   container: {
