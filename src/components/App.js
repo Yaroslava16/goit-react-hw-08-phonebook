@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../redux/auth';
 import RegisterView from '../views/RegisterView';
@@ -11,13 +11,13 @@ import ContactsView from '../views/ContactsView';
 
 class App extends Component {
   componentDidMount() {
-    this.props.onGetCurretnUser();
+    this.props.onGetCurrentUser();
   }
 
   render() {
     return (
       <Container>
-        <BrowserRouter>
+        
           <AppBar />
           <Switch>
             <Route exact path="/" component={HomeView} />
@@ -25,14 +25,14 @@ class App extends Component {
             <Route path="/login" component={LoginView} />
             <Route path="/contacts" component={ContactsView} />
           </Switch>
-        </BrowserRouter>
+        
       </Container>
     );
   }
 }
 
 const mapDispatchToProps = {
-  onGetCurretnUser: getCurrentUser,
+  onGetCurrentUser: getCurrentUser,
 };
 
 export default connect(null, mapDispatchToProps)(App);
