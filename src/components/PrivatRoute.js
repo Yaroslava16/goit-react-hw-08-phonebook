@@ -5,12 +5,13 @@ import { getIsAuthenticated } from '../redux/auth';
 const PrivateRoute = ({
   component: Component,
   isAuthenticated,
+  redirectTo,
   ...routeProps
 }) => (
   <Route
     {...routeProps}
     render={props =>
-      isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
+      isAuthenticated ? <Component {...props} /> : <Redirect to={redirectTo} />
     }
   />
 );

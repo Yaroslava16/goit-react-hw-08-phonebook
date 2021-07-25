@@ -21,10 +21,24 @@ class App extends Component {
       <Container>
         <AppBar />
         <Switch>
-          <Route exact path="/" component={HomeView} />
-          <Route path="/register" component={RegisterView} />
-          <PublicRoute path="/login" restricted component={LoginView} />
-          <PrivatRoute path="/contacts" component={ContactsView} />
+          <PublicRoute exact path="/" component={HomeView} />
+          <PublicRoute
+            path="/register"
+            restricted
+            redirectTo="/contacts"
+            component={RegisterView}
+          />
+          <PublicRoute
+            path="/login"
+            restricted
+            redirectTo="/contacts"
+            component={LoginView}
+          />
+          <PrivatRoute
+            path="/contacts"
+            redirectTo="/login"
+            component={ContactsView}
+          />
         </Switch>
       </Container>
     );
