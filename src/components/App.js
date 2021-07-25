@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getCurrentUser } from '../redux/auth';
 import RegisterView from '../views/RegisterView';
