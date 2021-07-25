@@ -9,6 +9,7 @@ import HomeView from '../views/HomeView';
 import LoginView from '../views/LoginView';
 import ContactsView from '../views/ContactsView';
 import PrivatRoute from './PrivatRoute';
+import PublicRoute from './PublicRoute';
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +23,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={HomeView} />
           <Route path="/register" component={RegisterView} />
-          <Route path="/login" component={LoginView} />
+          <PublicRoute path="/login" restricted component={LoginView} />
           <PrivatRoute path="/contacts" component={ContactsView} />
         </Switch>
       </Container>
